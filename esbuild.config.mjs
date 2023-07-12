@@ -1,3 +1,6 @@
+import esbuildSvelte from "esbuild-svelte";
+import sveltePreprocess from "svelte-preprocess";
+
 import esbuild from "esbuild";
 import process from "process";
 import builtins from "builtin-modules";
@@ -39,6 +42,18 @@ const context = await esbuild.context({
 	treeShaking: true,
 	outfile: "main.js",
 });
+
+esbuild
+	.build({
+		plugins: [
+			esbuildSvelte({
+				compilerOptions: { css: true },
+				preprocess: sveltePreprocess(),
+			}),
+		],
+		// ...
+	})
+	.catch(() => process.exit(1));
 
 if (prod) {
 	await context.rebuild();
