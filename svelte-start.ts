@@ -20,7 +20,7 @@ export class ExampleView extends ItemView {
   }
 
   async onOpen() {
-	store.plugin.set(this.plugin);
+    store.plugin.set(this.plugin);
 
     this.component = new Component({
       target: this.contentEl,

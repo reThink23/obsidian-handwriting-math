@@ -1,5 +1,5 @@
 import { writable } from "svelte/store";
-import type ExamplePlugin from "./main";
+import type HelloWorldPlugin from "./main";
 
-const plugin = writable<ExamplePlugin>();
+const plugin = writable<HelloWorldPlugin>();
 export default { plugin };
